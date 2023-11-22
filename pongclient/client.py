@@ -12,7 +12,6 @@ class ServerHandler(socket.socket, threading.Thread):
     def __init__(self, bind_address, server_address, pong_world, client_command=None):
         socket.socket.__init__(self, type=socket.SOCK_DGRAM)
         threading.Thread.__init__(self)
-        self.settimeout(2)
         self.setDaemon(True)
         self.bind(bind_address)
         self.server_address = server_address
