@@ -32,7 +32,7 @@ def main():
     
     local_address = ('localhost', random.randint(10000, 20000))
 
-    svh = client.client.ServerHandler(local_address,
+    svh = pongclient.client.ServerHandler(local_address,
                                           SERVER_ADDRESS,
                                           pong_world,
                                           client_command,)
