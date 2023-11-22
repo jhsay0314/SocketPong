@@ -45,11 +45,11 @@ class PongServer(threading.Thread, socket.socket):
 
         print('게임을 시작 중 입니다.')
         clock = pygame.time.Clock()
-        seconds_passed = 0
+        passSecond = 0
 
         while True:
-            self.pong_world.update(seconds_passed=seconds_passed)
-            seconds_passed = clock.tick(self.COMMAND_RATE) / 1000
+            self.pong_world.update(passSecond=passSecond)
+            passSecond = clock.tick(self.COMMAND_RATE) / 1000
         return
 
     def wait_client(self, return_queue=None):
@@ -104,7 +104,7 @@ class ClientHandler(threading.Thread, socket.socket):
         if data:
             decoded = data.decode('utf-8')
             try:
-                cc = json.loads(decoded, object_hook=pong.common.from_json)
+                cc = json.loads(decoded, object_hook=pong.common.fromJson)
             except ValueError as err:
                 print(err)
                 raise ValueError('Expecting a JSON string from client, but got something else:', decoded)
